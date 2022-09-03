@@ -9,8 +9,9 @@ public class GameData : MonoBehaviour
 
     public int deathCount;
 
-    public GameData(){
-        this.deathCount = 0
-        this.position = 0
+    public GameData()
+    {
+        this.deathCount = 0;
+        this.position = 0;
     }
 }

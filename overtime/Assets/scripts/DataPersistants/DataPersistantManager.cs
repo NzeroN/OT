@@ -4,38 +4,54 @@ using UnityEngine;
 
 public class DataPersistantManager : MonoBehaviour
 {
-    private GameData = gameData;
+    private GameData gameData;
     // Start is called before the first frame update
-    public static DataPersistantManager instance (get; private set;)
+    public static DataPersistantManager instance { get; private set; }
 
-    private void Awake() {
+    private void Awake()
+    {
         if (instance != null)
         {
             Debug.LogError("Not found");
         }
+        instance = this;
     }
-    instance = this;
 
-    public void Start(){
+    void LoadData(GameData data)
+    {
+
+    }
+
+    void SaveData(ref GameData data)
+    {
+
+    }
+
+    public void Start()
+    {
         LoadGame();
     }
 
-    public void NewGame(){
+    public void NewGame()
+    {
         this.gameData = new GameData();
     }
 
-    public void LoadGame(){
+    public void LoadGame()
+    {
         if (this.gameData == null)
         {
             NewGame();
         }
     }
 
-    public void SaveGame(){
+    public void SaveGame()
+    {
 
     }
 
-    public void OnApplicationExit(){
+    public void OnApplicationExit()
+    {
         SaveGame();
     }
 }
