@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
         DataPersistenceManager.instance.NewGame();
         // load the gameplay scene - which will in turn save the game because of
         // OnSceneUnloaded() in the DataPersistenceManager
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("6thFloor");
     }
 
     public void OnContinueGameClicked()
@@ -33,12 +33,18 @@ public class MainMenu : MonoBehaviour
         DisableMenuButtons();
         // load the next scene - which will in turn load the game because of 
         // OnSceneLoaded() in the DataPersistenceManager
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("6thFloor");
     }
 
     private void DisableMenuButtons()
     {
         newGameButton.interactable = false;
         continueGameButton.interactable = false;
+    }
+
+    public void OnExitGameClicked()
+    {
+        Debug.Log("Exited");
+        Application.Quit();
     }
 }
