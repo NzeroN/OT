@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public GameObject GameOverCut;
+    public GameObject GameOverCutRed;
+
     [HideInInspector]
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController firstPersonController;
 
@@ -527,9 +530,12 @@ public class Player : MonoBehaviour
         {
             if (playerCanDie)
             {
+
                 gameOverHUD.SetActive(true);
+                GameOverCut.SetActive(true);
                 Time.timeScale = 0;
                 firstPersonController.enabled = false;
+                
             }
             healthCurrent = 0;
         }
