@@ -113,7 +113,7 @@ public class AIactions : MonoBehaviour
     float idleDelayTimerDurationMin = 10.0f;
     float idleDelayTimerDurationMax = 50.0f;
     Vector3 idleLookAtPoint;
-    bool hasFoundLookAt = false;
+    public bool hasFoundLookAt = false;
 
     float recalulateSightTimer = 0.0f;
     [Tooltip("The time between vision recalculation. Set to 0 for the best AI behaviour, set slightly higher for better performance. Default: 0.5.")]
