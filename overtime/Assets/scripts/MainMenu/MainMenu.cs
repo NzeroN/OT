@@ -14,6 +14,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button continueGameButton;
     [SerializeField] private Button loadGameButton;
 
+    [Header("Fading")]
+
+    [SerializeField] private CanvasGroup menu;
+
     private void Start()
     {
         DisableButtonsDependingOnData();
@@ -32,12 +36,14 @@ public class MainMenu : MonoBehaviour
     {
         saveSlotsMenu.ActivateMenu(false);
         this.DeactivateMenu();
+        this.menu.alpha -= Time.deltaTime;
     }
 
     public void OnLoadGameClicked()
     {
         saveSlotsMenu.ActivateMenu(true);
         this.DeactivateMenu();
+        this.menu.alpha -= Time.deltaTime;
     }
 
     public void OnContinueGameClicked()
@@ -50,6 +56,7 @@ public class MainMenu : MonoBehaviour
         // load the next scene - which will in turn load the game because of 
         // OnSceneLoaded() in the DataPersistenceManager
         SceneManager.LoadSceneAsync("6thFloor");
+        this.menu.alpha -= Time.deltaTime;
     }
 
     public void OnExitGameClicked()

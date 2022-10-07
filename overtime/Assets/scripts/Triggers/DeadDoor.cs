@@ -11,6 +11,9 @@ public class DeadDoor : MonoBehaviour
         {
             Debug.Log("death: " + count);
             count++;
+            Player player = other.GetComponent<Player>();
+            player.healthCurrent = 0;
+            Debug.Log(player.healthCurrent);
         }
     }
 }
