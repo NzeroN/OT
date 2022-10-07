@@ -17,7 +17,7 @@ public class ActivePlayerArea : MonoBehaviour
     LineRenderer line;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         line = gameObject.GetComponent<LineRenderer>();
 
@@ -31,11 +31,11 @@ public class ActivePlayerArea : MonoBehaviour
         UpdateNodesInAPA();
         radius = (-AIdirector.sharedAIdirector.GetCurrentStressLevel() / 3) + maxRadius;
 
-        if(radius < minRadius)
+        if (radius < minRadius)
         {
             radius = minRadius;
         }
-        else if(radius > maxRadius)
+        else if (radius > maxRadius)
         {
             radius = maxRadius;
         }
@@ -45,7 +45,7 @@ public class ActivePlayerArea : MonoBehaviour
     {
         foreach (WaypointNode node in AIdirector.sharedAIdirector.allNodes)
         {
-            if(Vector3.Distance(node.transform.position, AIdirector.sharedAIdirector.GetPlayerPosition()) < radius)
+            if (Vector3.Distance(node.transform.position, AIdirector.sharedAIdirector.GetPlayerPosition()) < radius)
             {
                 node.SetActive(true);
             }
@@ -56,14 +56,14 @@ public class ActivePlayerArea : MonoBehaviour
                 //Count how many nodes are active, if less than the minimum amount are active then keep this node activated.
                 //Ensures that closest nodes remain active even if they aren't directly within the APA. 
                 int activeCount = 0;
-                foreach(WaypointNode node2 in AIdirector.sharedAIdirector.allNodes)
+                foreach (WaypointNode node2 in AIdirector.sharedAIdirector.allNodes)
                 {
-                    if(node2.isActive)
+                    if (node2.isActive)
                     {
                         activeCount++;
                     }
                 }
-                if(activeCount < AIdirector.sharedAIdirector.minNumberOfActiveNodes)
+                if (activeCount < AIdirector.sharedAIdirector.minNumberOfActiveNodes)
                 {
                     node.SetActive(true);
                 }
@@ -74,7 +74,6 @@ public class ActivePlayerArea : MonoBehaviour
     void DrawAreaCircle()
     {
         float x;
-        float y;
         float z;
 
         float angle = 20f;
