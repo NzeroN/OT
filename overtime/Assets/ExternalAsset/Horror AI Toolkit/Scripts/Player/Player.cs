@@ -134,14 +134,14 @@ public class Player : MonoBehaviour
 
         Random.InitState((int)System.DateTime.Now.Ticks);
 
-        playerAudioSource = GetComponent<AudioSource>();   
+        playerAudioSource = GetComponent<AudioSource>();
 
         if (!hasTorch || (hasTorch && !torchOnStatus))
         {
             TurnOffTorch();
         }
 
-        if(!hasGun && gunObject != null)
+        if (!hasGun && gunObject != null)
         {
             gunObject.SetActive(false);
         }
@@ -162,15 +162,15 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(getCurrentSpeed() > maxWalkSoundThreshold)
+        if (getCurrentSpeed() > maxWalkSoundThreshold)
         {
             sound.volume = maxWalkSoundAmount;
         }
-        else if(getCurrentSpeed() > midWalkSoundThreshold)
+        else if (getCurrentSpeed() > midWalkSoundThreshold)
         {
             sound.volume = midWalkSoundAmount;
         }
-        else if(getCurrentSpeed() > minWalkSoundThreshold)
+        else if (getCurrentSpeed() > minWalkSoundThreshold)
         {
             sound.volume = minWalkSoundAmount;
         }
@@ -179,21 +179,21 @@ public class Player : MonoBehaviour
             sound.volume = 0;
         }
 
-        if(isHiding && GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.E))
+        if (isHiding && GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.E))
         {
             LeaveHideInObject();
         }
 
-        if(GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.T) && hasTorch && (torchObject != null))
+        if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.T) && hasTorch && (torchObject != null))
         {
             ToggleTorch();
         }
 
-        if(torchOnStatus == true)
+        if (torchOnStatus == true)
         {
             torchRemainingPower -= torchPowerDrain * Time.deltaTime;
 
-            if(torchRemainingPower <= 25)
+            if (torchRemainingPower <= 25)
             {
                 torchIsFlickering = true;
             }
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
                 torchIsFlickering = false;
             }
 
-            if(torchIsFlickering)
+            if (torchIsFlickering)
             {
                 FlickerTorch();
             }
@@ -211,14 +211,14 @@ public class Player : MonoBehaviour
                 TurnOnTorch();
             }
 
-            if(torchRemainingPower <= 0)
+            if (torchRemainingPower <= 0)
             {
                 torchRemainingPower = 0.0f;
                 TurnOffTorch();
             }
         }
 
-        if(healthCurrent <= 50.0f)
+        if (healthCurrent <= 50.0f)
         {
             firstPersonController.m_WalkSpeed = hurtWalkSpeed;
             firstPersonController.m_RunSpeed = hurtRunSpeed;
@@ -231,16 +231,16 @@ public class Player : MonoBehaviour
             firstPersonController.m_HeadBob.VerticalBobRange = normalHeadbob;
         }
 
-        if((isUsingDoor || isHiding) && hasGun)
+        if ((isUsingDoor || isHiding) && hasGun)
         {
             if (gunObject.activeInHierarchy)
             {
                 gunObject.SetActive(false);
             }
         }
-        else if((!isUsingDoor && !isHiding) && hasGun)
+        else if ((!isUsingDoor && !isHiding) && hasGun)
         {
-            if(!gunObject.activeInHierarchy)
+            if (!gunObject.activeInHierarchy)
             {
                 gunObject.SetActive(true);
             }
@@ -250,7 +250,7 @@ public class Player : MonoBehaviour
     //Get the current speed of the player, used for 'hearing' detection
     public float getCurrentSpeed()
     {
-        Vector3 velocity;       
+        Vector3 velocity;
         velocity = firstPersonController.GetVelocity();
         float speed = velocity.magnitude;
         //Debug.Log("speed=" + speed);
@@ -276,7 +276,7 @@ public class Player : MonoBehaviour
         playerCamera.transform.position = new Vector3(hideIn.transform.position.x, hideIn.transform.position.y, hideIn.transform.position.z);
         playerCamera.transform.rotation = hideIn.transform.rotation;
 
-        if(EnterHideInBroadcast != null)
+        if (EnterHideInBroadcast != null)
             EnterHideInBroadcast();
     }
 
@@ -313,7 +313,7 @@ public class Player : MonoBehaviour
 
         if (doorBeingUsed.GetComponent<Door>().snapPointFront.GetComponent<DoorSnapPoint>().isHit)
         {
-            this.transform.position = new Vector3(doorBeingUsed.GetComponent<Door>().snapPointFront.transform.position.x, doorBeingUsed.GetComponent<Door>().snapPointFront.transform.position.y + 1.5f, doorBeingUsed.GetComponent<Door>().snapPointFront.transform.position.z); 
+            this.transform.position = new Vector3(doorBeingUsed.GetComponent<Door>().snapPointFront.transform.position.x, doorBeingUsed.GetComponent<Door>().snapPointFront.transform.position.y + 1.5f, doorBeingUsed.GetComponent<Door>().snapPointFront.transform.position.z);
             this.transform.rotation = doorBeingUsed.GetComponent<Door>().snapPointFront.transform.rotation;
             playerCamera.transform.position = this.transform.position;
             playerCamera.transform.rotation = this.transform.rotation;
@@ -384,17 +384,17 @@ public class Player : MonoBehaviour
     public void FlickerTorch()
     {
         torchTimeBetweenFlickerTimer += Time.deltaTime;
-        if(torchTimeBetweenFlickerTimer >= (torchTimeBetweenFlickerDuration))
+        if (torchTimeBetweenFlickerTimer >= (torchTimeBetweenFlickerDuration))
         {
             torchFlickerTimer += Time.deltaTime;
-            if(torchFlickerTimer <= (torchFlickerDuration + torchFlickerModifier))
+            if (torchFlickerTimer <= (torchFlickerDuration + torchFlickerModifier))
             {
                 torchObject.SetActive(false);
             }
             else
             {
 
-                if(torchRemainingPower <= 15)
+                if (torchRemainingPower <= 15)
                 {
                     torchFlickerTimer = Random.Range(0.0f, 0.2f);
                     torchTimeBetweenFlickerTimer = Random.Range(0.4f, 1.0f);
@@ -406,7 +406,7 @@ public class Player : MonoBehaviour
                     torchTimeBetweenFlickerTimer = Random.Range(0.0f, 0.3f);
                     torchFlickerModifier = 0.0f;
                 }
-            }    
+            }
         }
         else
         {
@@ -434,7 +434,7 @@ public class Player : MonoBehaviour
         }
 
         torchRemainingPower += powerAmount;
-        if(torchRemainingPower > 100)
+        if (torchRemainingPower > 100)
         {
             torchRemainingPower = 100;
         }
@@ -453,7 +453,7 @@ public class Player : MonoBehaviour
 
     public void GainAmmo(int gainAmount)
     {
-        if(pickupGunSound != null)
+        if (pickupGunSound != null)
         {
             playerAudioSource.PlayOneShot(pickupGunSound, 1.0f);
         }
@@ -478,7 +478,7 @@ public class Player : MonoBehaviour
 
     public bool CheckAmmoInMag()
     {
-        if(ammoCountMag > 0)
+        if (ammoCountMag > 0)
         {
             return true;
         }
@@ -487,7 +487,7 @@ public class Player : MonoBehaviour
 
     public bool CheckAmmoTotal()
     {
-        if(ammoCountTotal > 0)
+        if (ammoCountTotal > 0)
         {
             return true;
         }
@@ -504,12 +504,12 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(rayOrigin, playerCamera.transform.forward, out hit, gunMaxRange, ignorePlayer))
         {
             //Debug.Log("hit " + hit.collider.gameObject.name.ToString());
-            if(hit.collider.tag == "AdvancedAI" || hit.collider.tag == "BasicAI" || hit.collider.tag == "ScoutAI")
+            if (hit.collider.tag == "AdvancedAI" || hit.collider.tag == "BasicAI" || hit.collider.tag == "ScoutAI")
             {
                 hit.collider.gameObject.GetComponent<AIactions>().TakeDamage(gunDamage);
             }
 
-            if(hit.collider.tag == "StaticAI")
+            if (hit.collider.tag == "StaticAI")
             {
                 hit.collider.gameObject.GetComponent<StaticAI>().TakeDamage(gunDamage);
             }
@@ -533,9 +533,11 @@ public class Player : MonoBehaviour
 
                 gameOverHUD.SetActive(true);
                 GameOverCut.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 firstPersonController.enabled = false;
-                
+
             }
             healthCurrent = 0;
         }
@@ -549,7 +551,7 @@ public class Player : MonoBehaviour
         }
 
         healthCurrent += healthGain;
-        if(healthCurrent > healthMax)
+        if (healthCurrent > healthMax)
         {
             healthCurrent = healthMax;
         }
