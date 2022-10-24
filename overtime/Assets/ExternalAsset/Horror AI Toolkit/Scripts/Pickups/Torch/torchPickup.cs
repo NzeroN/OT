@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class torchPickup : MonoBehaviour
 {
+    public GameObject phone;
     public float powerGain = 50.0f;
     RawImage iconImage;
 
@@ -52,5 +53,6 @@ public class torchPickup : MonoBehaviour
         player.GetComponent<Player>().GainTorchPower(powerGain);
         player.GetComponent<Player>().TurnOnTorch();
         gameObject.SetActive(false);
+        phone.SetActive(true);
     }
 }
