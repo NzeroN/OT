@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonPanel : MonoBehaviour
+public class ExistDoor : MonoBehaviour
 {
-    public GameObject ButtonPanelPressed;
+    public GameObject gameOver;
     RawImage iconImage;
- 
 
     public bool displayToolTip = false;
 
@@ -15,7 +14,6 @@ public class ButtonPanel : MonoBehaviour
     {
         iconImage = transform.GetChild(0).transform.GetChild(0).GetComponent<RawImage>();
         iconImage.enabled = false;
-
     }
 
     void OnTriggerStay(Collider other)
@@ -25,12 +23,11 @@ public class ButtonPanel : MonoBehaviour
             if (displayToolTip)
             {
                 iconImage.enabled = true;
-     
             }
             if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
             {
                 pressed(other.gameObject);
-            }
+            };
         }
     }
 
@@ -41,14 +38,12 @@ public class ButtonPanel : MonoBehaviour
             if (displayToolTip)
             {
                 iconImage.enabled = false;
-
             }
         }
     }
 
     void pressed(GameObject player)
     {
-        ButtonPanelPressed.SetActive(true);
-        gameObject.SetActive(false);
+        gameOver.SetActive(true);
     }
 }
