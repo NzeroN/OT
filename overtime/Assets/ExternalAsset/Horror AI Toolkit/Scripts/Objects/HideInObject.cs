@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,12 +40,14 @@ public class HideInObject : MonoBehaviour
     public bool playerRecentlyEntered;
     [HideInInspector]
     public float playerRecentlyEnteredTimerReset = 2.0f;
-
     GameObject hudPanel;
     GameObject closePanel;
-
+    public GameObject HasHide;
+    public GameObject IsReal;
+    public GameObject OfficeEventManager;
+    public GameObject OfficeEventAfterHide;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerCamera = player.transform.GetChild(0).GetComponent<Camera>();
@@ -91,14 +93,14 @@ public class HideInObject : MonoBehaviour
 
         if (playerIsIn)
         {
-            if(Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
                 if (door.transform.localEulerAngles.y < doorYAnglePeekMax)
                 {
                     OpenDoor();
                     playerCamera.gameObject.transform.Rotate(Vector3.up, -1);
-                    playerCamera.gameObject.transform.Translate(new Vector3(0.005f,0,0.02f));
-                }   
+                    playerCamera.gameObject.transform.Translate(new Vector3(0.005f, 0, 0.02f));
+                }
 
             }
             if (Input.GetKey(KeyCode.S))
@@ -107,12 +109,12 @@ public class HideInObject : MonoBehaviour
                 {
                     CloseDoor();
                     playerCamera.gameObject.transform.Rotate(Vector3.up, 1);
-                    playerCamera.gameObject.transform.Translate(new Vector3(-0.005f, 0,-0.02f));
+                    playerCamera.gameObject.transform.Translate(new Vector3(-0.005f, 0, -0.02f));
                 }
 
             }
 
-            if(isOpenFully)
+            if (isOpenFully)
             {
                 player.GetComponent<Player>().LeaveHideInObject();
             }
@@ -157,6 +159,10 @@ public class HideInObject : MonoBehaviour
                             player.GetComponent<Player>().StartHideInObject(this);
                             playerIsIn = true;
                             CloseDoorInstant();
+                            HasHide.SetActive(true);
+                            IsReal.SetActive(true);
+                            OfficeEventAfterHide.SetActive(true);
+                            Destroy(OfficeEventManager);
                         }
                         else if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F) && !playerIsIn)
                         {
@@ -204,7 +210,7 @@ public class HideInObject : MonoBehaviour
         {
             door.transform.RotateAround(doorHinge.transform.position, Vector3.up, -2);
         }
-        else if(door.transform.localEulerAngles.y <= doorYAngleMin)
+        else if (door.transform.localEulerAngles.y <= doorYAngleMin)
         {
             door.transform.localEulerAngles = new Vector3(0, doorYAngleMin, 0);
             door.transform.localPosition = doorStartPos;

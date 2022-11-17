@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -530,7 +530,7 @@ public class Player : MonoBehaviour
         {
             if (playerCanDie)
             {
-
+                
                 gameOverHUD.SetActive(true);
                 GameOverCut.SetActive(true);
                 Cursor.visible = true;
@@ -556,5 +556,6 @@ public class Player : MonoBehaviour
             healthCurrent = healthMax;
         }
     }
+
 }
 

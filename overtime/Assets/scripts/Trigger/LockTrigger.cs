@@ -16,6 +16,8 @@ public class LockTrigger : MonoBehaviour
     public GameObject Screen;
     public GameObject ScreenText;
     public GameObject ScreenPass;
+    public GameObject PlayerPhoneOpposite;
+    public GameObject PrankCheck;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,20 @@ public class LockTrigger : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (PlayerPhone.activeSelf)
+        {
+            PlayerPhoneOpposite.SetActive(value: false);
+        }
+        else
+            PlayerPhoneOpposite.SetActive(true);
+
+        if (PrankCheck.activeSelf)
+        {
+            Text.SetActive(false);
+            ScreenText.SetActive(false);
+
+        }
+
     }
 
     void OnTriggerStay(Collider col)
@@ -43,15 +59,18 @@ public class LockTrigger : MonoBehaviour
                 if (phone.activeSelf)
                 {
                     Text.SetActive(true);
+
                 }
                 if (Screen.activeSelf)
                 {
                     ScreenText.SetActive(true);
+
                 }
                 if (Screen.activeSelf && phone.activeSelf)
                 {
                     Text.SetActive(true);
                     ScreenText.SetActive(false);
+
                 }
             }
         }
@@ -62,6 +81,7 @@ public class LockTrigger : MonoBehaviour
         {
             Text.SetActive(false);
             ScreenText.SetActive(false);
+
         }
     }
     bool InfiniteCameraCanSeePoint(Camera camera, Vector3 point)

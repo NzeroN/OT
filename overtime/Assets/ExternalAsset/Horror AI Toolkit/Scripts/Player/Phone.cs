@@ -5,6 +5,8 @@ using UnityEngine;
 public class Phone : MonoBehaviour
 {
     public GameObject Canvas;
+    public GameObject PicTook;
+    public GameObject ShowRules;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,14 @@ public class Phone : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Q))
         {
             Canvas.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.R) && PicTook.activeSelf)
+        {
+            ShowRules.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.R) && PicTook.activeSelf)
+        {
+            ShowRules.SetActive(false);
         }
     }
 
