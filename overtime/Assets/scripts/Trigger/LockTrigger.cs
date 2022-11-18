@@ -16,7 +16,7 @@ public class LockTrigger : MonoBehaviour
     public GameObject Screen;
     public GameObject ScreenText;
     public GameObject ScreenPass;
-    public GameObject PlayerPhoneOpposite;
+    //public GameObject PlayerPhoneOpposite;
     public GameObject PrankCheck;
 
     // Start is called before the first frame update
@@ -34,13 +34,13 @@ public class LockTrigger : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (PlayerPhone.activeSelf)
+        /*if (PlayerPhone.activeSelf)
         {
             PlayerPhoneOpposite.SetActive(value: false);
         }
         else
             PlayerPhoneOpposite.SetActive(true);
-
+        */
         if (PrankCheck.activeSelf)
         {
             Text.SetActive(false);
