@@ -9,6 +9,8 @@ public class LittleGirlFound : MonoBehaviour
     public GameObject TooLate;
     public GameObject PowerCut;
     public GameObject RuleBrokeMock;
+    public GameObject thirdFloor;
+
     public bool displayToolTip = false;
 
     void Start()
@@ -35,10 +37,13 @@ public class LittleGirlFound : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && !other.isTrigger)
         {
-            TooLate.SetActive(false);
-            PowerCut.SetActive(false);
-            RuleBrokeMock.SetActive(false);
-            Destroy(TooLate);
+            //TooLate.SetActive(false);
+            //PowerCut.SetActive(false);
+            //Destroy(TooLate);
         }
+    }
+    IEnumerator waitForFive()
+    {
+        yield return new WaitForSeconds(5);
     }
 }
