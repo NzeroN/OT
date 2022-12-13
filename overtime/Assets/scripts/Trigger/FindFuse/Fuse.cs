@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LittleGirlFound : MonoBehaviour
+public class Fuse : MonoBehaviour
 {
-    public GameObject oldTime;
-    public GameObject newTime;
-    public GameObject RuleBrokeMock;
-    public GameObject thirdFloor;
-    public GameObject thirdFloorLight;
+  //  public GameObject oldTime;
+   // public GameObject newTime;
+    public GameObject littleGirl;
+    public GameObject Dialogue;
+    public GameObject FuseEvent;
     public bool displayToolTip = false;
 
     void Start()
@@ -22,10 +22,11 @@ public class LittleGirlFound : MonoBehaviour
         {
             if (displayToolTip)
             {
-                RuleBrokeMock.SetActive(true);
-                oldTime.SetActive(false);
-                newTime.SetActive(true);
-                thirdFloorLight.SetActive(true);
+           //     oldTime.SetActive(false);
+           //     newTime.SetActive(true);
+                littleGirl.SetActive(true);
+                Dialogue.SetActive(true);
+                FuseEvent.SetActive(true);
             }
         }
     }

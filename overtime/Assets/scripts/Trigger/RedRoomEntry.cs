@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RedRoom : MonoBehaviour
+public class RedRoomEntry : MonoBehaviour
 {
-    public GameObject oldTime;
-    public GameObject newTime;
-    public GameObject UnlockFloor;
+    public GameObject In;
+    public GameObject Out;
 
     /*   public GameObject ScreenRules;
        public GameObject ScreenAfter;*/
@@ -27,9 +26,8 @@ public class RedRoom : MonoBehaviour
         {
             if (displayToolTip)
             {
-                oldTime.SetActive(false);
-                newTime.SetActive(true);
-                Destroy(UnlockFloor);
+                Destroy(In);
+                Destroy(Out);
             }
             /*  if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
               {

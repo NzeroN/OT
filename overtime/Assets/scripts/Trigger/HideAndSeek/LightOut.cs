@@ -6,21 +6,29 @@ public class LightOut : MonoBehaviour
 {
     public GameObject lightCut;
     public GameObject PlayAnim;
-
+    public GameObject RuleClear;
+    public GameObject Destruct;
     public bool displayToolTip = false;
 
     void Start()
     {
-        StartCoroutine(waitForNine());
+        Destroy(RuleClear);
+        StartCoroutine(waitForNineLightCut());
+        StartCoroutine(waitForTen());
     }
 
     private void Update()
     {
-    
+
     }
-    IEnumerator waitForNine()
+    IEnumerator waitForNineLightCut()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(9);
         lightCut.SetActive(false);
+    }
+    IEnumerator waitForTen()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(Destruct);
     }
 }
