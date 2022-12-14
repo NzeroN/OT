@@ -26,6 +26,7 @@ public class LittleGirlFound : MonoBehaviour
                 oldTime.SetActive(false);
                 newTime.SetActive(true);
                 thirdFloorLight.SetActive(true);
+                Destroy(thirdFloor);
             }
         }
     }

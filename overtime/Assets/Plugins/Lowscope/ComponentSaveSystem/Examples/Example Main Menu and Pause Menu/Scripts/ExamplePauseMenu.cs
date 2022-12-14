@@ -30,7 +30,7 @@ namespace Lowscope.Saving.Examples
         private Dictionary<GameObject, bool> cachedVisibility = new Dictionary<GameObject, bool>();
 
         private int openMenuKeyCount;
-        
+
         // Mainly to update references of older prefab version.
 #if UNITY_EDITOR
         [HideInInspector]
@@ -88,7 +88,7 @@ namespace Lowscope.Saving.Examples
             {
                 Time.timeScale = 1;
             }
-            
+
             if (closeWindowOnSave)
             {
                 SaveMaster.OnWritingToDiskDone -= OnWrittenToDisk;
@@ -99,7 +99,7 @@ namespace Lowscope.Saving.Examples
                 SaveMaster.OnSlotChangeDone -= OnChangedSlot;
             }
         }
-        
+
         private void OnPressContinue()
         {
             Hide();
@@ -157,13 +157,13 @@ namespace Lowscope.Saving.Examples
                 bool visible;
                 if (cachedVisibility.TryGetValue(toggleObjectVisibility[i], out visible))
                 {
-                    toggleObjectVisibility[i].gameObject.SetActive(display? visible : !visible);
+                    toggleObjectVisibility[i].gameObject.SetActive(display ? visible : !visible);
                 }
             }
 
             if (pauseAndUnpauseGame)
             {
-                Time.timeScale = display? 0 : 1;
+                Time.timeScale = display ? 0 : 1;
             }
         }
 
@@ -192,6 +192,17 @@ namespace Lowscope.Saving.Examples
                         Hide();
                     }
                     return;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (Time.timeScale == 1)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
                 }
             }
         }

@@ -8,6 +8,11 @@ public class RedRoomEntry : MonoBehaviour
     public GameObject In;
     public GameObject Out;
 
+    public GameObject one;
+    public GameObject two;
+    public GameObject three;
+    public GameObject four;
+
     /*   public GameObject ScreenRules;
        public GameObject ScreenAfter;*/
 
@@ -28,6 +33,10 @@ public class RedRoomEntry : MonoBehaviour
             {
                 Destroy(In);
                 Destroy(Out);
+                Destroy(one);
+                Destroy(two);
+                Destroy(three);
+                Destroy(four);
             }
             /*  if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
               {
