@@ -28,7 +28,7 @@ public class LightOut : MonoBehaviour
     }
     IEnumerator waitForTen()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(16);
         Destroy(Destruct);
     }
 }
