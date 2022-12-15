@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class NewRuleMornitor : MonoBehaviour
 {
+    public GameObject oldTime;
+    public GameObject newTime;
     public GameObject Seen;
     public GameObject SeenUp;
+    public GameObject Timer;
     RawImage iconImage;
     public bool displayToolTip = false;
     void Start()
@@ -44,6 +47,9 @@ public class NewRuleMornitor : MonoBehaviour
     {
         Seen.SetActive(true);
         SeenUp.SetActive(true);
+        Timer.SetActive(true);
+        oldTime.SetActive(false);
+        newTime.SetActive(true);
         Destroy(gameObject);
     }
 }
