@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnLoadGameClicked()
     {
+        DisableMenuButtons();
         saveSlotsMenu.ActivateMenu(true);
         this.DeactivateMenu();
     }
@@ -54,12 +55,14 @@ public class MainMenu : MonoBehaviour
 
     public void OnExitGameClicked()
     {
+        DisableMenuButtons();
         Debug.Log("Exit");
         Application.Quit();
     }
 
     public void OnOptionClicked()
     {
+        DisableMenuButtons();
         Debug.Log("Options");
     }
 
