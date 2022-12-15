@@ -27,6 +27,7 @@ public class ElevatorCheck : MonoBehaviour
         if (PaleMan.activeSelf)
         {
             Destroy(gameObject);
+            Destroy(TooTired);
         }
     }
 

@@ -1,26 +1,32 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class NewRuleMornitor : MonoBehaviour
+
+public class ButtonPanelEndBad : MonoBehaviour
 {
-    public GameObject Seen;
-    public GameObject SeenUp;
+    //public GameObject ButtonPanelPressed;
     RawImage iconImage;
+ 
+
     public bool displayToolTip = false;
+
     void Start()
     {
         iconImage = transform.GetChild(0).transform.GetChild(0).GetComponent<RawImage>();
         iconImage.enabled = false;
+
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !other.isTrigger)
+        if(other.gameObject.tag == "Player" && !other.isTrigger)
         {
             if (displayToolTip)
             {
                 iconImage.enabled = true;
+     
             }
             if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
             {
@@ -36,14 +42,15 @@ public class NewRuleMornitor : MonoBehaviour
             if (displayToolTip)
             {
                 iconImage.enabled = false;
+
             }
         }
     }
 
     void pressed(GameObject player)
     {
-        Seen.SetActive(true);
-        SeenUp.SetActive(true);
-        Destroy(gameObject);
+      /*  ButtonPanelPressed.SetActive(true);
+        gameObject.SetActive(false);*/
+        SceneManager.LoadScene(3);
     }
 }
