@@ -7,6 +7,7 @@ public class MeetLittleGirl : MonoBehaviour
 {
     public GameObject SpawnLittleGirl;
     public GameObject StartRandom;
+    public GameObject Giggle;
 
     /*   public GameObject ScreenRules;
        public GameObject ScreenAfter;*/
@@ -28,6 +29,7 @@ public class MeetLittleGirl : MonoBehaviour
             {
                 SpawnLittleGirl.SetActive(true);
                 StartRandom.SetActive(true);
+                Destroy(Giggle);
             }
             /*  if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
               {
