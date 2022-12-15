@@ -65,16 +65,7 @@ namespace Lowscope.Saving.Examples
 
         private void Continue()
         {
-            // SaveMaster.SetSlotToLastUsedSlot(true);
-            try
-            {
-                SaveMaster.SetSlotToLastUsedSlot(true);
-            }
-            finally
-            {
-                Debug.Log("hi");
-                // SceneManager.LoadSceneAsync("prologue");
-            }
+            SaveMaster.SetSlotToLastUsedSlot(true);
         }
 
         private void LoadGame()
