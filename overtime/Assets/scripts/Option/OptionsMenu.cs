@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class OptionsMenu : MonoBehaviour
-{
-    public AudioMixer audioMixer;
-    public void SetVolume (float volume)
+    public class OptionsMenu : MonoBehaviour
     {
-        audioMixer.SetFloat("volume", volume);
-    }
+        public AudioMixer audioMixer;
 
-    public void SetFullScreen (bool isFullScreen)
-    {
-        Screen.fullScreen = isFullScreen;
+        [SerializeField] private Button buttonClose;
+
+        public void Awake()
+        {
+            buttonClose.onClick.AddListener(() => this.gameObject.SetActive(false));
+        }
+        public void SetVolume (float volume)
+        {
+            audioMixer.SetFloat("volume", volume);
+        }
+
+        public void SetFullScreen (bool isFullScreen)
+        {
+            Screen.fullScreen = isFullScreen;
+        }
     }
-}

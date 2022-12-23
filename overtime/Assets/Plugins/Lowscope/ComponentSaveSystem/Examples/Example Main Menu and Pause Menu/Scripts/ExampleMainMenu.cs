@@ -12,10 +12,12 @@ namespace Lowscope.Saving.Examples
         [SerializeField] private Button buttonContinue;
         [SerializeField] private Button buttonNew;
         [SerializeField] private Button buttonLoad;
+        [SerializeField] private Button buttonOption;
         [SerializeField] private Button buttonQuit;
 
         [SerializeField] private ExampleErrorScreen errorMessage;
         [SerializeField] private ExampleSlotMenu slotMenu;
+        [SerializeField] private GameObject optionMenu;
 
         [Header("Configuration")]
         [SerializeField] private string sceneToLoadOnNewGame;
@@ -31,6 +33,7 @@ namespace Lowscope.Saving.Examples
             buttonNew.onClick.AddListener(NewGame);
             buttonLoad.onClick.AddListener(LoadGame);
             buttonQuit.onClick.AddListener(QuitGame);
+            buttonOption.onClick.AddListener(Option);
 
             SaveMaster.OnDeletedSave += OnDeletedSave;
             SaveMaster.OnLoadingFromDiskCorrupt += OnLoadCorrupt;
@@ -72,6 +75,13 @@ namespace Lowscope.Saving.Examples
         {
             slotMenu.gameObject.SetActive(true);
         }
+
+        private void Option()
+        {
+            optionMenu.gameObject.SetActive(true);
+            Debug.Log("hi");
+        }
+
 
         private void QuitGame()
         {
