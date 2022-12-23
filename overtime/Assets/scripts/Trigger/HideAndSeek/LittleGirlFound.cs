@@ -9,6 +9,10 @@ public class LittleGirlFound : MonoBehaviour
     public GameObject RuleBrokeMock;
     public GameObject thirdFloor;
     public GameObject thirdFloorLight;
+    public GameObject oldObjForth;
+    public GameObject oldObjFifth;
+    public GameObject oldObjSixth;
+    public GameObject newObj;
     public bool displayToolTip = false;
 
     void Start()
@@ -27,6 +31,10 @@ public class LittleGirlFound : MonoBehaviour
                 newTime.SetActive(true);
                 thirdFloorLight.SetActive(true);
                 Destroy(thirdFloor);
+                Destroy(oldObjForth);
+                Destroy(oldObjFifth);
+                Destroy(oldObjSixth);
+                newObj.SetActive(true);
             }
         }
     }

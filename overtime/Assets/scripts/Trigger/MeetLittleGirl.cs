@@ -8,6 +8,8 @@ public class MeetLittleGirl : MonoBehaviour
     public GameObject SpawnLittleGirl;
     public GameObject StartRandom;
     public GameObject Giggle;
+    public GameObject oldObj;
+    public GameObject newObj;
 
     /*   public GameObject ScreenRules;
        public GameObject ScreenAfter;*/
@@ -30,6 +32,8 @@ public class MeetLittleGirl : MonoBehaviour
                 SpawnLittleGirl.SetActive(true);
                 StartRandom.SetActive(true);
                 Destroy(Giggle);
+                oldObj.SetActive(false);
+                newObj.SetActive(true);
             }
             /*  if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
               {

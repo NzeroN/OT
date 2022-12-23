@@ -46,6 +46,8 @@ public class HideInObject : MonoBehaviour
     public GameObject IsReal;
     public GameObject OfficeEventManager;
     public GameObject OfficeEventAfterHide;
+    public GameObject oldObj;
+    public GameObject newObj;
     // Use this for initialization
     void Start()
     {
@@ -162,6 +164,10 @@ public class HideInObject : MonoBehaviour
                             HasHide.SetActive(true);
                             IsReal.SetActive(true);
                             OfficeEventAfterHide.SetActive(true);
+
+                            oldObj.SetActive(false);
+                            newObj.SetActive(true);
+
                             Destroy(OfficeEventManager);
                         }
                         else if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F) && !playerIsIn)

@@ -9,6 +9,8 @@ public class NewRuleMornitor : MonoBehaviour
     public GameObject Seen;
     public GameObject SeenUp;
     public GameObject Timer;
+    public GameObject oldObj;
+    public GameObject newObj;
     RawImage iconImage;
     public bool displayToolTip = false;
     void Start()
@@ -51,5 +53,7 @@ public class NewRuleMornitor : MonoBehaviour
         oldTime.SetActive(false);
         newTime.SetActive(true);
         Destroy(gameObject);
+        oldObj.SetActive(false);
+        newObj.SetActive(true);
     }
 }

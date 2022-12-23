@@ -13,6 +13,8 @@ public class ScreenCapture : MonoBehaviour
     public GameObject oldTime;
     public GameObject RedDoor;
     public GameObject RedDoorA;
+    public GameObject oldObj;
+    public GameObject newObj;
     RawImage iconImage;
 
     public bool displayToolTip = false;
@@ -41,6 +43,8 @@ public class ScreenCapture : MonoBehaviour
                 newTime.SetActive(true);
                 RedDoor.SetActive(true);
                 RedDoorA.SetActive(true);
+                oldObj.SetActive(false);
+                newObj.SetActive(true);
             }
         }
     }

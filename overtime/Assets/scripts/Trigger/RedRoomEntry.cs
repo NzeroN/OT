@@ -12,6 +12,8 @@ public class RedRoomEntry : MonoBehaviour
     public GameObject two;
     public GameObject three;
     public GameObject four;
+    public GameObject oldObj;
+    public GameObject newObj;
 
     /*   public GameObject ScreenRules;
        public GameObject ScreenAfter;*/
@@ -37,6 +39,8 @@ public class RedRoomEntry : MonoBehaviour
                 Destroy(two);
                 Destroy(three);
                 Destroy(four);
+                oldObj.SetActive(false);
+                newObj.SetActive(true);
             }
             /*  if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
               {

@@ -9,6 +9,8 @@ public class Fuse : MonoBehaviour
     public GameObject littleGirl;
     public GameObject Dialogue;
     public GameObject FuseEvent;
+    public GameObject oldObj;
+    public GameObject newObj;
     public bool displayToolTip = false;
 
     void Start()
@@ -27,6 +29,8 @@ public class Fuse : MonoBehaviour
                 littleGirl.SetActive(true);
                 Dialogue.SetActive(true);
                 FuseEvent.SetActive(true);
+                oldObj.SetActive(false);
+                newObj.SetActive(true);
             }
         }
     }

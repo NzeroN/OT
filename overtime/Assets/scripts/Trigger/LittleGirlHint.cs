@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LittleGirlHint : MonoBehaviour
 {
     public GameObject SpawnLittleGirlHint;
+    public GameObject oldObj;
+    public GameObject newObj;
 
     /*   public GameObject ScreenRules;
        public GameObject ScreenAfter;*/
@@ -26,6 +28,8 @@ public class LittleGirlHint : MonoBehaviour
             if (displayToolTip)
             {
                 SpawnLittleGirlHint.SetActive(true);
+                oldObj.SetActive(false);
+                newObj.SetActive(true);
             }
             /*  if (GameController.sharedGameController.inputController.TestKeyDelay(KeyCode.F))
               {

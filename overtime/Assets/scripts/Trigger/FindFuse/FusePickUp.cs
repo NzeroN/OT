@@ -8,6 +8,8 @@ public class FusePickUp : MonoBehaviour
     public GameObject FuseEvent;
     public GameObject FusePicked;
     public GameObject PlayAnim;
+    public GameObject oldObj;
+    public GameObject newObj;
     RawImage iconImage;
 
     public bool displayToolTip = false;
@@ -49,5 +51,7 @@ public class FusePickUp : MonoBehaviour
         FusePicked.SetActive(true);
         PlayAnim.SetActive(true);
         Destroy(FuseEvent);
+        oldObj.SetActive(false);
+        newObj.SetActive(true);
     }
 }

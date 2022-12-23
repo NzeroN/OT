@@ -9,6 +9,8 @@ public class FuseActivated : MonoBehaviour
     public GameObject lightOff;
     public GameObject lightOn;
     public GameObject FloorUnlock;
+    public GameObject oldObj;
+    public GameObject newObj;
     void Start()
     {
         lightOn.SetActive(true);
@@ -16,6 +18,8 @@ public class FuseActivated : MonoBehaviour
         Destroy(FloorUnlock);
         oldTime.SetActive(false);
         newTime.SetActive(true);
+        oldObj.SetActive(false);
+        newObj.SetActive(true);
     }
 
 }
