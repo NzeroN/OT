@@ -13,10 +13,12 @@ namespace Lowscope.Saving.Examples
         [SerializeField] private GameObject pauseMenuObjects;
         [SerializeField] private ExampleSlotMenu slotMenu;
         [SerializeField] private Transform darkenBackground;
+        [SerializeField] private GameObject optionMenu;
 
         [SerializeField] private Button buttonContinue;
         [SerializeField] private Button buttonLoad;
         [SerializeField] private Button buttonSave;
+        [SerializeField] private Button buttonOption;
         [SerializeField] private Button buttonQuit;
 
         [Header("Configuration")]
@@ -64,6 +66,7 @@ namespace Lowscope.Saving.Examples
             buttonLoad.onClick.AddListener(OnOpenSlotMenuLoad);
             buttonSave.onClick.AddListener(OnOpenSlotMenuSave);
             buttonQuit.onClick.AddListener(OnQuit);
+            buttonOption.onClick.AddListener(OnOpenOption);
 
             if (closeWindowOnSave)
             {
@@ -135,6 +138,11 @@ namespace Lowscope.Saving.Examples
         {
             slotMenu.SetMode(ExampleSlotMenu.Mode.Load);
             slotMenu.gameObject.SetActive(true);
+        }
+
+        private void OnOpenOption()
+        {
+            optionMenu.gameObject.SetActive(true);
         }
 
         private void ToggleDisplay(bool display)
