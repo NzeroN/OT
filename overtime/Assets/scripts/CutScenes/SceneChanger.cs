@@ -11,12 +11,16 @@ public class SceneChanger : MonoBehaviour
     void Update()
     {
         CheckTimer();
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            changeTime = 0;
+        }
     }
 
     void CheckTimer()
     {
         changeTime -= Time.deltaTime;
-        if(changeTime <= 0)
+        if (changeTime <= 0)
         {
             SceneManager.LoadScene(sceneName);
         }
